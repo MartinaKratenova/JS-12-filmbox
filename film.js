@@ -103,4 +103,128 @@ const filmy = [
 			'Na zámek v podhůří Krkonoš přijíždí jeho nový majitel Štěpán se svojí snoubenkou, krásnou komtesou Blankou, a mladším bratrem Adamem. Cestou kočár nešťastně srazí kolemjdoucí dívku, Adam jí pomůže a ona se do něj zamiluje. Na zámku Adam objeví starou vlašskou knihu, která by měla obsahovat cestu k pokladům. Tajemné značky vlašské knihy však nedokáže vyluštit ani národopisec Jiráček, který v kraji sbírá pověsti a nevychází z údivu nad tím, že zdejší lidé stále věří v Krakonoše. Na zámku se objeví záhadný cizinec a nabídne Štěpánovi, že jej k pokladu za určitých podmínek dovede. Výprava do hor může začít. Naplní se Liduščina láska k Adamovi? Jakou záhadu skrývá starý obraz na zámku Hůrka a co strašlivého se v horách kdysi odehrálo? A kdo je vlastně Krakonoš a jaké je jeho největší tajemství? (csfd.cz, Česká televize)',
 		premiera: '2022-12-24',
 	},
-]
+	,
+		{
+		id: 'zaklinac',
+		nazev: 'Zaklínač',
+		plakat: {
+			url: 'https://image.pmgstatic.com/cache/resized/w1526/files/images/film/posters/000/025/25810_47f9b0.jpg',
+			sirka: 420,
+			vyska: 592,
+		},
+		ochutnavka: 'Polský fantasy film podle slavné knižní předlohy.',
+		popis:
+			'Vedle světově proslulé tolkienovské trilogie Pán prstenů, získal v posledních letech mezi fanoušky fantasy neobyčejnou slávu a uznání také polský spisovatel Andrzej Sapkowski se svým hrdinou zaklínačem Geraltem. Ten je hlavní postavou jeho povídek vydaných v knížkách Zaklínač, Meč osudu, Poslední přání a také románové pentalogie Krev elfů, Čas pohrdání, Křest ohněm, Věž vlaštovky a Paní Jezera. Není vůbec náhodné, že řada fanoušků a obdivovatelů téměř okamžitě vytvořila nový fenomén, jehož součástí jsou fan kluby a internetové stránky. V dílech Sapkowského jsou zaklínači dokonalí bojovníci překračující možnosti lidského vnímání. Smyslem jejich existence je zabíjení stryg, vlkodlaků, upírů, bazilišků a dalších netvorů, které pronásledují lidi. Bělovlasý zaklínač Geralt z Rivie se však trochu "vymkl" z řad běžných zaklínačů. Není jenom mistrem různých druhů zbraní, ačkoliv sám nejraději zápasí s mečem, také trochu rozumí magii a je schopen bojovat s každým protivníkem. Nikdy nezůstává pouze chladnokrevným profesionálem, má lidské stránky a slabosti. ',
+		premiera: '2001-09-11',
+	},
+];
+
+
+
+const filmID = window.location.hash.slice(1);
+
+const film = filmy.find((film) => film.id === filmID);
+
+const containerElement = document.querySelector(".container");
+
+const detailFilmu = document.querySelector("#detail-filmu");
+
+
+
+detailFilmu.innerHTML = `
+				<div class="row g-0">
+					<div class="col-md-5">
+						<img
+							src="${film.plakat.url}"
+							alt="${film.nazev} - plakát"
+							class="img-fluid rounded-start"
+							width="${film.plakat.sirka}"
+							height="${film.plakat.vyska}"
+						/>
+					</div>
+					<div class="col-md-7">
+						<div class="card-body">
+							<h5 class="card-title">${film.nazev}</h5>
+							<p class="card-text">${film.popis}</p>
+							<p class="card-text">
+								<small class="text-muted" id="premiera"
+									>Premiéra <strong>${film.premiera}</strong>, což je za 24
+									dní.</small
+								>
+							</p>
+							<h6>Hodnocení</h6>
+							<div class="stars">
+								<button
+									class="far fa-star button-star"
+									data-mdb-toggle="tooltip"
+									title="Nic moc"
+								>
+									1
+								</button>
+								<button
+									class="far fa-star button-star"
+									data-mdb-toggle="tooltip"
+									title="Ucházející"
+								>
+									2
+								</button>
+								<button
+									class="far fa-star button-star"
+									data-mdb-toggle="tooltip"
+									title="Dobrý"
+								>
+									3
+								</button>
+								<button
+									class="far fa-star button-star"
+									data-mdb-toggle="tooltip"
+									title="Skvělý"
+								>
+									4
+								</button>
+								<button
+									class="far fa-star button-star"
+									data-mdb-toggle="tooltip"
+									title="Úžasný"
+								>
+									5
+								</button>
+							</div>
+
+							<h6 class="mt-4">Poznámka</h6>
+							<form id="note-form">
+								<div class="row">
+									<div class="col-md-6 col-lg-7 col-xl-8 mb-2">
+										<div class="form-outline">
+											<textarea
+												class="form-control"
+												id="message-input"
+												rows="4"
+											></textarea>
+											<label class="form-label" for="message-input"
+												>Text poznámky</label
+											>
+										</div>
+									</div>
+									<div class="col-md-6 col-lg-5 col-xl-4">
+										<div class="form-check d-flex justify-content-center mb-2">
+											<input
+												class="form-check-input me-2 mb-2"
+												type="checkbox"
+												value=""
+												id="terms-checkbox"
+											/>
+											<label class="form-check-label" for="terms-checkbox">
+												Souhlasím se všeobecnými podmínky užívání.
+											</label>
+										</div>
+										<button type="submit" class="btn btn-primary btn-block">
+											Uložit
+										</button>
+									</div>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+	`;

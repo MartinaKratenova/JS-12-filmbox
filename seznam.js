@@ -103,4 +103,50 @@ const filmy = [
 			'Na zámek v podhůří Krkonoš přijíždí jeho nový majitel Štěpán se svojí snoubenkou, krásnou komtesou Blankou, a mladším bratrem Adamem. Cestou kočár nešťastně srazí kolemjdoucí dívku, Adam jí pomůže a ona se do něj zamiluje. Na zámku Adam objeví starou vlašskou knihu, která by měla obsahovat cestu k pokladům. Tajemné značky vlašské knihy však nedokáže vyluštit ani národopisec Jiráček, který v kraji sbírá pověsti a nevychází z údivu nad tím, že zdejší lidé stále věří v Krakonoše. Na zámku se objeví záhadný cizinec a nabídne Štěpánovi, že jej k pokladu za určitých podmínek dovede. Výprava do hor může začít. Naplní se Liduščina láska k Adamovi? Jakou záhadu skrývá starý obraz na zámku Hůrka a co strašlivého se v horách kdysi odehrálo? A kdo je vlastně Krakonoš a jaké je jeho největší tajemství? (csfd.cz, Česká televize)',
 		premiera: '2022-12-24',
 	},
+		{
+		id: 'zaklinac',
+		nazev: 'Zaklínač',
+		plakat: {
+			url: 'https://image.pmgstatic.com/cache/resized/w1526/files/images/film/posters/000/025/25810_47f9b0.jpg',
+			sirka: 420,
+			vyska: 592,
+		},
+		ochutnavka: 'Polský fantasy film podle slavné knižní předlohy.',
+		popis:
+			'Vedle světově proslulé tolkienovské trilogie Pán prstenů, získal v posledních letech mezi fanoušky fantasy neobyčejnou slávu a uznání také polský spisovatel Andrzej Sapkowski se svým hrdinou zaklínačem Geraltem. Ten je hlavní postavou jeho povídek vydaných v knížkách Zaklínač, Meč osudu, Poslední přání a také románové pentalogie Krev elfů, Čas pohrdání, Křest ohněm, Věž vlaštovky a Paní Jezera. Není vůbec náhodné, že řada fanoušků a obdivovatelů téměř okamžitě vytvořila nový fenomén, jehož součástí jsou fan kluby a internetové stránky. V dílech Sapkowského jsou zaklínači dokonalí bojovníci překračující možnosti lidského vnímání. Smyslem jejich existence je zabíjení stryg, vlkodlaků, upírů, bazilišků a dalších netvorů, které pronásledují lidi. Bělovlasý zaklínač Geralt z Rivie se však trochu "vymkl" z řad běžných zaklínačů. Není jenom mistrem různých druhů zbraní, ačkoliv sám nejraději zápasí s mečem, také trochu rozumí magii a je schopen bojovat s každým protivníkem. Nikdy nezůstává pouze chladnokrevným profesionálem, má lidské stránky a slabosti. ',
+		premiera: '2001-09-11',
+	},
+	
 ]
+
+
+
+
+
+const seznamFilmu = document.querySelector('#seznam-filmu');
+
+filmy.forEach((film) => {
+  seznamFilmu.innerHTML += `
+  <div class="col">
+  <div class="card">
+    <img
+      src="${film.plakat.url}"
+      width="${film.plakat.sirka}"
+      height="${film.plakat.vyska}"
+      class="card-img-top"
+      alt="${film.nazev} - plakát"
+    />
+    <div class="card-body">
+      <h5 class="card-title">${film.nazev}</h5>
+      <p class="card-text">${film.ochutnavka}</p>
+      <a href="film.html#${film.id}" class="btn btn-primary">Přehrát</a>
+    </div>
+  </div>
+</div>
+  `;
+});
+
+
+
+
+
