@@ -148,7 +148,7 @@ detailFilmu.innerHTML = `
 							<p class="card-text">${film.popis}</p>
 							<p class="card-text">
 								<small class="text-muted" id="premiera"
-									>Premiéra <strong>${dayjs(film.premiera).format('D. M. YYYY')}</strong>, což je za 24
+									>Premiéra <strong>${dayjs(film.premiera).format('D. M. YYYY')}</strong>, což je za ${dayjs(film.premiera).diff(dayjs(), 'day')}
 									dní.</small
 								>
 							</p>
