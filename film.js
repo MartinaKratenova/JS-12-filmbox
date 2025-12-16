@@ -318,3 +318,56 @@ starButtons.forEach((button) => {
 });
 
 
+//prehravac
+
+const player = document.querySelector('#prehravac');
+const playButton = document.querySelector('.play');
+const pauseButton = document.querySelector('.pause');
+const video = document.querySelector('video');
+
+const timer = document.querySelector('.current-time');
+
+playButton.addEventListener('click', (e) => {
+	video.play();
+
+
+});
+video.addEventListener('playing', (e) => {
+	player.classList.add('playing');
+
+});
+
+pauseButton.addEventListener('click', (e) => {
+	video.pause();
+});
+
+video.addEventListener('pause', (e) => {
+	player.classList.remove('playing');
+});
+
+
+video.addEventListener('timeupdate', (e) => {
+
+	const seconds = video.currentTime;
+	const minutes = Math.floor(seconds / 60).toString().padStart(2, '0');
+	const remainingSeconds = Math.floor(seconds % 60).toString().padStart(2, '0');
+	timer.textContent = `${minutes}:${remainingSeconds}`;
+});
+
+document.body.addEventListener('keydown', (e) => {
+	if (
+		e.code === 'Space' &&
+		e.target.tagName !== 'TEXTAREA' &&
+		e.target.tagName !== 'INPUT' &&
+		e.target.tagName !== 'BUTTON'
+	) {
+
+		if (e.code === 'Space') {
+			if (video.paused) {
+				video.play();
+			} else {
+				video.pause();
+			}
+		}
+	}
+});
