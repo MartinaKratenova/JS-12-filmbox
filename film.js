@@ -115,7 +115,7 @@ const filmy = [
 		ochutnavka: 'Polský fantasy film podle slavné knižní předlohy.',
 		popis:
 			'Vedle světově proslulé tolkienovské trilogie Pán prstenů, získal v posledních letech mezi fanoušky fantasy neobyčejnou slávu a uznání také polský spisovatel Andrzej Sapkowski se svým hrdinou zaklínačem Geraltem. Ten je hlavní postavou jeho povídek vydaných v knížkách Zaklínač, Meč osudu, Poslední přání a také románové pentalogie Krev elfů, Čas pohrdání, Křest ohněm, Věž vlaštovky a Paní Jezera. Není vůbec náhodné, že řada fanoušků a obdivovatelů téměř okamžitě vytvořila nový fenomén, jehož součástí jsou fan kluby a internetové stránky. V dílech Sapkowského jsou zaklínači dokonalí bojovníci překračující možnosti lidského vnímání. Smyslem jejich existence je zabíjení stryg, vlkodlaků, upírů, bazilišků a dalších netvorů, které pronásledují lidi. Bělovlasý zaklínač Geralt z Rivie se však trochu "vymkl" z řad běžných zaklínačů. Není jenom mistrem různých druhů zbraní, ačkoliv sám nejraději zápasí s mečem, také trochu rozumí magii a je schopen bojovat s každým protivníkem. Nikdy nezůstává pouze chladnokrevným profesionálem, má lidské stránky a slabosti. ',
-		premiera: '2001-09-11',
+		premiera: '2025-12-15',
 	},
 ];
 
@@ -127,6 +127,23 @@ const film = filmy.find((film) => film.id === filmID);
 
 const detailFilmu = document.querySelector("#detail-filmu");
 
+const dateDiff = () => {
+
+	const d = dayjs(film.premiera).diff(dayjs(), 'day');
+
+	if (d > 0) {
+		return `což je za ${d.toLocaleString('cs-CS')} dní`;
+	}
+	else if (d < -1) {
+		return `což bylo před ${Number(-d).toLocaleString('cs-CS')} dny`;
+	}
+	else if (d < 0) {
+		return `což bylo před ${Number(-d).toLocaleString('cs-CS')} dnem`;
+	}
+	else {
+		return `což bylo dnes`;
+	}
+};
 
 
 detailFilmu.innerHTML = `
@@ -145,10 +162,9 @@ detailFilmu.innerHTML = `
 							<h5 class="card-title">${film.nazev}</h5>
 							<p class="card-text">${film.popis}</p>
 							<p class="card-text">
-								<small class="text-muted" id="premiera"
-									>Premiéra <strong>${dayjs(film.premiera).format('D. M. YYYY')}</strong>, což je za ${dayjs(film.premiera).diff(dayjs(), 'day')}
-									dní.</small
-								>
+								<small class="text-muted" id="premiera">
+								Premiéra <strong>${dayjs(film.premiera).format('D. M. YYYY')}</strong>, ${dateDiff()}.
+									</small>
 							</p>
 							<h6>Hodnocení</h6>
 							<div class="stars">
@@ -227,6 +243,8 @@ detailFilmu.innerHTML = `
 				</div>
 	`;
 
+
+	
 //poznamka
 
 const note = document.querySelector('#note-form');

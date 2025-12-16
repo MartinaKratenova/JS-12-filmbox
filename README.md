@@ -17,6 +17,6 @@ detail filmu (cast 5) - OK
 poznamka (cast 8) - OK
 
 nepovinne:
-premiera (cast 6) - ale doporucuji si praci s datumy vyzkouset
+premiera (cast 6) - OK
 hodnoceni (cast 7)
 ovladani prehravace (cast 9)
