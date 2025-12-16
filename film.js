@@ -244,7 +244,7 @@ detailFilmu.innerHTML = `
 	`;
 
 
-	
+
 //poznamka
 
 const note = document.querySelector('#note-form');
@@ -270,3 +270,51 @@ note.addEventListener('submit', (e) => {
 	}
 
 });
+
+
+//hodnoceni
+const starButtons = document.querySelectorAll('.fa-star');
+
+const star = (starNumber) => {
+
+	starButtons.forEach((button) => {
+		if (Number(button.textContent) <= Number(starNumber)) {
+			button.classList.add('fas');
+			button.classList.remove('far');
+		} else {
+			button.classList.add('far');
+			button.classList.remove('fas');
+		}
+
+	});
+
+};
+
+let starNumberSelected = 0;
+
+starButtons.forEach((button) => {
+	button.addEventListener('mouseenter', (e) => {
+		const starNumber = Number(e.target.textContent);
+
+		star(starNumber);
+		console.log("mouseenter: " + starNumber);
+
+	});
+
+	button.addEventListener('mouseleave', (e) => {
+		star(starNumberSelected);
+		console.log("mouseleave: " + starNumberSelected);
+
+	});
+
+	button.addEventListener('click', (e) => {
+		starNumberSelected = Number(e.target.textContent);
+		star(starNumberSelected);
+		console.log("Click: " + starNumberSelected);
+
+	});
+
+
+});
+
+
