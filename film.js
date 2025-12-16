@@ -104,7 +104,7 @@ const filmy = [
 		premiera: '2022-12-24',
 	},
 	,
-		{
+	{
 		id: 'zaklinac',
 		nazev: 'Zaklínač',
 		plakat: {
@@ -124,8 +124,6 @@ const filmy = [
 const filmID = window.location.hash.slice(1);
 
 const film = filmy.find((film) => film.id === filmID);
-
-const containerElement = document.querySelector(".container");
 
 const detailFilmu = document.querySelector("#detail-filmu");
 
@@ -228,3 +226,29 @@ detailFilmu.innerHTML = `
 					</div>
 				</div>
 	`;
+
+//poznamka
+
+const note = document.querySelector('#note-form');
+const noteMessageInput = document.querySelector('#message-input');
+const noteTermsCheckbox = document.querySelector('#terms-checkbox');
+
+
+note.addEventListener('submit', (e) => {
+	e.preventDefault();
+
+	if (noteMessageInput.value === '') {
+		noteMessageInput.classList.add('is-invalid');
+		noteMessageInput.focus();
+
+	}
+	if (!noteTermsCheckbox.checked) {
+		noteTermsCheckbox.classList.add('is-invalid');
+		noteTermsCheckbox.focus();
+	}
+	if (noteMessageInput.value !== '' && noteTermsCheckbox.checked) {
+		let noteText = noteMessageInput.value;
+		note.innerHTML = `<p class="card-text">${noteText}</p>`;
+	}
+
+});

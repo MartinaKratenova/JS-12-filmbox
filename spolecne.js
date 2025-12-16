@@ -1,13 +1,13 @@
 
 // 3. Hamburger menu
-const menuTlacitko = document.querySelector('#menu-tlacitko');
-const menuPolozky = document.querySelector('#menu-polozky');
-const krizek = document.querySelector('.navbar').querySelector('.fas');
+const menuButton = document.querySelector('#menu-tlacitko');
+const menuItems = document.querySelector('#menu-polozky');
+const menuBurgerCross = document.querySelector('.navbar').querySelector('.fas');
 
-menuTlacitko.addEventListener('click', () => {
-    menuPolozky.classList.toggle('show');
-    krizek.classList.toggle('fa-bars');
-    krizek.classList.toggle('fa-xmark');
+menuButton.addEventListener('click', () => {
+    menuItems.classList.toggle('show');
+    menuBurgerCross.classList.toggle('fa-bars');
+    menuBurgerCross.classList.toggle('fa-xmark');
 });
 
 
