@@ -262,7 +262,7 @@ note.addEventListener('submit', (e) => {
 	}
 	if (!noteTermsCheckbox.checked) {
 		noteTermsCheckbox.classList.add('is-invalid');
-		noteTermsCheckbox.focus();
+		
 	}
 	if (noteMessageInput.value !== '' && noteTermsCheckbox.checked) {
 		let noteText = noteMessageInput.value;
